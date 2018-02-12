@@ -1,0 +1,1 @@
+# zerto-vss-user-checkpoints
