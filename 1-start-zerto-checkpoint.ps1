@@ -17,7 +17,7 @@ $nl = [Environment]::NewLine
 $scriptTxt = ""
 
 # Gather list of local disks that aren't instance stores
-$drives = Get-WmiObject -Class Win32_LogicalDisk | where {$_.VolumeName -notlike "Temporary Storage*"} |  where {$_.DriveType -eq '3'} | Select-Object DeviceID
+$drives = Get-CimInstance Win32_LogicalDisk | where {$_.VolumeName -notlike "TemporaryStorage*"} | where { $_.DriveType -like "3"} | Select-Object DeviceId
 
 # Output diskshadow commands to a text file
 $scriptTxt = $scriptTxt + "begin backup" + $nl
